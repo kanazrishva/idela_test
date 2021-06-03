@@ -1,0 +1,168 @@
+version: '3'
+services:
+
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    environment:
+        APP_ENV: local
+        CONTAINER_ROLE: app
+        CACHE_DRIVER: redis
+        SESSION_DRIVER: redis
+        QUEUE_DRIVER: redis
+        REDIS_HOST: redis
+    networks:
+      - app-network
+
+  scheduler:
+    image: digitalocean.com/php
+    container_name: laravel-scheduler
+    depends_on:
+        - app
+    volumes:
+        - .:/var/www/
+    environment:
+        APP_ENV: local
+        CONTAINER_ROLE: scheduler
+        CACHE_DRIVER: redis
+        SESSION_DRIVER: redis
+        QUEUE_DRIVER: redis
+        REDIS_HOST: redis
+    networks:
+      - app-network
+
+  queue:
+    image: digitalocean.com/php
+    container_name: laravel-queue
+    depends_on:
+        - app
+    volumes:
+        - .:/var/www/
+    environment:
+        APP_ENV: local
+        CONTAINER_ROLE: queue
+        CACHE_DRIVER: redis
+        SESSION_DRIVER: redis
+        QUEUE_DRIVER: redis
+        REDIS_HOST: redis
+    networks:
+      - app-network
+
+  horizon:
+    image: digitalocean.com/php
+    container_name: laravel-horizon
+    depends_on:
+        - app
+    volumes:
+        - .:/var/www/
+    environment:
+        APP_ENV: local
+        CONTAINER_ROLE: horizon
+    networks:
+      - app-network
+
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3000:3000"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: idela
+      MYSQL_USER: idela
+      MYSQL_PASSWORD: idela
+    volumes:
+      - ./dbdata:/var/lib/mysql
+    networks:
+      - app-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+    networks:
+      - app-network
+
+#elasticsearch
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.8
+    container_name: elasticsearch
+    # restart: unless-stopped
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - node.name=kolorob-node
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - app-network
+
+#redis
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+
+    command: redis-server --requirepass sOmE_sEcUrE_pAsS
+
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - ./redis-data:/var/lib/redis
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
+  esdata:
+    driver: local

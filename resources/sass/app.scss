@@ -1,0 +1,50 @@
+$tan: #f3f2ef;
+$bkg: #F6F8F9;
+$red: #d82e26;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;700&display=swap');
+
+$lato: 'Lato', sans-serif;
+$oswald: 'Oswald', sans-serif;
+
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+
+@import '~vue-popperjs/dist/vue-popper';
+@import '~leaflet/dist/leaflet';
+@import 'multiselect';
+@import 'charts';
+
+@import 'buttons';
+
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+  display: none;
+}
+
+// Special Classes for Graphs
+.compare-by {
+  .apexcharts-datalabel {
+    transform: rotate(-90deg);
+    transform-origin: unset;
+    transform-box: fill-box;
+    font-family: $oswald;
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+
+@import 'page-multiselect';
+@import 'popper';
+/* purgecss end ignore */
+
+@tailwind utilities;
+
+.font-oswald {
+  font-family: $oswald;
+}
+
+.font-lato {
+  font-family: $lato;
+}

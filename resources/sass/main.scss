@@ -1,0 +1,139 @@
+$tan: #f3f2ef;
+$bkg: #F6F8F9;
+$red: #d82e26;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@0;1&family=Oswald:wght@400;500;700&display=swap');
+
+@import '~leaflet/dist/leaflet';
+@import '~vue-slider-component/lib/theme/default.scss';
+
+$lato: 'Lato', sans-serif;
+$oswald: 'Oswald', sans-serif;
+
+/* purgecss start ignore */
+
+@tailwind base;
+@tailwind components;
+
+@import 'charts';
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+  display: none;
+}
+
+@import 'popper';
+@import 'buttons';
+
+// Special Classes for Graphs
+// .compare-by {
+//   .apexcharts-datalabel {
+//     transform: rotate(-90deg);
+//     transform-origin: unset;
+//     transform-box: fill-box;
+//     font-family: $oswald;
+//     font-size: 16px;
+//     font-weight: normal;
+//   }
+// }
+
+.vue-slider-rail {
+  @apply bg-gray-400 rounded-full;
+}
+
+.text-shdow-resources {
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+.pin-c-x {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.pin-c-y {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pin-c {
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.checkbox-right:after {
+  content: '';
+  margin-right: -16px;
+  margin-top: 6px;
+  height: 2px;
+  @apply absolute bg-teal-100 w-4 right-0 block;
+}
+
+// Vue Slider
+.vue-range-slider.slider-component .slider-tooltip-wrap .slider-tooltip {
+  @apply text-xs bg-teal-500 border-teal-600;
+}
+
+.vue-range-slider.slider-component .slider .slider-process {
+  @apply bg-teal-500;
+}
+
+.vue-range-slider.slider-component .slider .slider-dot {
+  @apply bg-teal-500;
+}
+
+/* purgecss end ignore */
+@tailwind utilities;
+
+body {
+  background: $bkg;
+  font-family: $lato;
+  padding: 0;
+  margin-top: 90px;
+}
+
+.font-oswald {
+  font-family: $oswald;
+}
+
+.nav-secondary {
+  background: $tan;
+  height: 30px;
+  color: #4a4a4a;
+
+  .btn-login {
+    background: $red;
+
+    .icon-login {
+      margin-right: 5px;
+    }
+  }
+
+  .btn-start {
+    .icon-start {
+      margin-right: 5px;
+    }
+  }
+}
+
+.nav-main {
+  background: #dfe8ef;
+  height: 60px;
+}
+
+
+.breadcrumbs {
+  font-size: 10px;
+}
+
+.footer-contact {
+  background: $red;
+}
+
+.footer-product {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+// Blocks
+.more-info-box {
+  background: $bkg;
+}

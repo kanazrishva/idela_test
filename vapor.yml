@@ -1,0 +1,34 @@
+id: 8991
+name: idela-data
+environments:
+    production:
+        memory: 2048
+        cli-memory: 2048
+        cli-timeout: 900
+        timeout: 900
+        queue-timeout: 900
+        database: idela-production-rds
+        domain: data.idela-network.org
+        cache: staging-cache
+        runtime: php-7.4
+        storage: idela-data-storage
+        build:
+            - 'vapor env:pull production'
+            - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
+            - 'php artisan event:cache'
+            - 'npm ci && npm run prod && rm -rf node_modules'
+    staging:
+        memory: 2048
+        cli-memory: 2048
+        cli-timeout: 900
+        timeout: 900
+        queue-timeout: 900
+        database: idela-staging-rds
+        cache: staging-cache
+        runtime: php-7.4
+        storage: idela-data-storage-staging
+        build:
+            - 'vapor env:pull staging'
+            - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install'
+            - 'php artisan event:cache'
+            - 'npm ci && npm run staging && rm -rf node_modules'

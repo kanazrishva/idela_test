@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="32px" viewBox="0 0 45 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Mail Icon</title>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Data-Page-Domain-Environment-Additional-Graphs" transform="translate(-559.000000, -4126.000000)" stroke="#F0A91E" stroke-width="3">
+            <g id="::-Resources-+-Info" transform="translate(0.000000, 3293.000000)">
+                <g id="::-More-Info" transform="translate(87.000000, 710.000000)">
+                    <g id="Contact-Us" transform="translate(437.000000, 92.000000)">
+                        <g id="Contact" transform="translate(37.000000, 33.000000)">
+                            <g id="Mail-Icon">
+                                <polyline id="icon" points="41.5 28.5 0 28.5 0 0 41.5 0 41.5 20"></polyline>
+                                <path d="M0,0 L18.6996301,12.9116493 C20.0812311,13.8656119 21.9115325,13.8552575 23.2822518,12.8857243 L41.5,0 L41.5,0" id="Path-3"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

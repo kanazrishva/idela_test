@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="42px" viewBox="0 0 32 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>book-icon</title>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Data-Page-Domain-Environment-Additional-Graphs" transform="translate(-122.000000, -4126.000000)" stroke="#F0A91E" stroke-width="3">
+            <g id="::-Resources-+-Info" transform="translate(0.000000, 3293.000000)">
+                <g id="::-More-Info" transform="translate(87.000000, 710.000000)">
+                    <g id="Quesitons" transform="translate(0.000000, 92.000000)">
+                        <g id="book-icon" transform="translate(37.000000, 33.000000)">
+                            <polyline id="Path" points="0 34 0 0 28 0 28 30"></polyline>
+                            <path d="M28,38 L4,38 C1.790861,38 2.705415e-16,36.209139 0,34 C-2.705415e-16,31.790861 1.790861,30 4,30 L28,30 L28,30" id="Path-2"></path>
+                            <line x1="8" y1="14.5" x2="17" y2="14.5" id="Line-4-Copy"></line>
+                            <line x1="7.5" y1="7.5" x2="19.5" y2="7.5" id="Line-4"></line>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

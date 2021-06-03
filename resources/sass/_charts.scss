@@ -1,0 +1,66 @@
+.apexcharts-xaxis-title-text,
+.apexcharts-yaxis-title-text {
+  font-family: $oswald #{!important};
+  @apply font-normal;
+}
+
+.apexcharts-tooltip-title {
+  @apply pl-4 #{!important};
+}
+
+.apexcharts-xaxis-label,
+.apexcharts-yaxis-label {
+  font-family: $oswald #{!important};
+}
+
+.apex-yaxis-idela {
+  font-family: $oswald #{!important};
+  @apply truncate w-3 text-yellow-500 #{!important};
+}
+
+.apexcharts-tooltip {
+  @apply rounded-r-xl border-solid border-3 font-normal bg-white rounded-bl-xl whitespace-normal #{!important};
+  left: 0;
+  top: 0;
+  width: 100%;
+  white-space: normal;
+}
+
+@screen md {
+  .apexcharts-tooltip {
+    left: auto;
+    top: auto;
+    bottom: auto;
+    width: auto;
+    @apply rounded-r-xl border-solid border-3 font-normal bg-white rounded-bl-xl whitespace-normal #{!important};
+  }
+}
+
+.apexcharts-tooltip-text-value {
+  @apply font-normal #{!important};
+}
+
+.apexcharts-tooltip-title {
+  font-family: $oswald #{!important};
+}
+
+.apexcharts-menu-icon {
+  transform: scale(1) !important;
+  @apply w-64 #{!important};
+}
+
+.apexcharts-xaxistooltip {
+  @apply hidden #{!important};
+}
+
+.apexcharts-text.apexcharts-pie-label {
+  fill: white;
+}
+
+.apexcharts-tooltip-series-group {
+  background-color: white !important;
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  color: black !important;
+}
